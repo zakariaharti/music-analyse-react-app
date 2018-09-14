@@ -8,6 +8,7 @@
     ]
   },
   "rules": {
-    "no-unused-expression": false
+    "no-unused-expression": false,
+    "ordered-imports": false
   }
 }

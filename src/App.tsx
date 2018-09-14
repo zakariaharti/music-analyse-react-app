@@ -15,12 +15,13 @@ const App: React.SFC<{}> = () => {
 injectGlobal`
   :root{
     box-sizing: border-box;
+    --primary-color: #d42661;
   }
 
   *,
-  *::after,
-  *::before{
-    box-sizing: border-box;
+  *:after,
+  *:before{
+    box-sizing: inherit;
   }
 
   @font-face{
@@ -28,8 +29,28 @@ injectGlobal`
     src: url('/fonts/OpenSans-Regular.ttf');
   }
 
-  html{
+  @font-face{
+    font-family: 'opensans-bold';
+    src: url('/fonts/OpenSans-Bold.ttf');
+  }
+
+  @font-face{
+    font-family: 'opensans-extrabold';
+    src: url('/fonts/OpenSans-ExtraBold.ttf');
+  }
+
+  body{
     font-family: opensans;
+    margin: 0;
+    padding: 0;
+  }
+
+  li{
+    list-style-type: none;
+  }
+
+  a{
+    text-decoration: none;
   }
 `;
 
