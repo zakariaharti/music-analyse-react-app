@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-import Album,{ IAlbumType } from '../Album';
+import Album, { IAlbumType } from '../Album';
 import Container from '../../ui/Container';
 
 interface IAlbumsListType{
