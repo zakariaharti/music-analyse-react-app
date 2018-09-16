@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { FaSearch } from 'react-icons/fa';
 
 import Container from '../ui/Container';
+import AlbumsContainer from '../containers/AlbumsContainer';
 
 const StyledWrapper = styled.div`
   padding: 3em 0;
@@ -86,21 +87,24 @@ const StyledBody = styled.div`
 
 const Home:React.SFC<{}> = () => {
   return(
-    <StyledWrapper>
-      <Container>
-        <StyledHeader>
-          <a href="#" className="home">home</a>
-          <a href="#" className="login-button">login</a>
-        </StyledHeader>
-        <StyledBody>
-          <h1>music realm</h1>
-          <form>
-            <input type="text" placeholder="type album name.." />
-            <FaSearch className="search-icon" />
-          </form>
-        </StyledBody>
-      </Container>
-    </StyledWrapper>
+    <React.Fragment>
+      <StyledWrapper>
+        <Container>
+           <StyledHeader>
+             <a href="#" className="home">home</a>
+             <a href="#" className="login-button">login</a>
+           </StyledHeader>
+           <StyledBody>
+             <h1>music realm</h1>
+             <form>
+                <input type="text" placeholder="type album name.." />
+                <FaSearch className="search-icon" />
+             </form>
+           </StyledBody>
+         </Container>
+       </StyledWrapper>
+      <AlbumsContainer />
+  </React.Fragment>
   );
 };
 
