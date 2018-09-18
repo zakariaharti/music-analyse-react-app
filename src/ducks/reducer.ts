@@ -1,9 +1,12 @@
 import { combineReducers } from 'redux';
+import { combineEpics } from 'redux-observable';
 
 import { albumReducer } from './album/reducers';
+import { fetchAlbumsEpic } from './album/epics';
 
-const rootReducer = combineReducers({
+
+export const rootEpic = combineEpics(fetchAlbumsEpic);
+
+export const rootReducer = combineReducers({
   albumsState: albumReducer
 });
-
-export default rootReducer;

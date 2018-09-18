@@ -8,7 +8,7 @@ export enum TypeKeys{
 
 export interface IFetchAlbumsSuccess{
   type: TypeKeys.FETCH_ALBUMS_SUCCESS;
-  albums: IAlbumType[];
+  albums: any;
 }
 
 export interface IFetchAlbumsRequest{
@@ -24,3 +24,13 @@ export interface IFetchAlbumsFailure{
 export type ActionTypes = IFetchAlbumsSuccess |
                           IFetchAlbumsRequest |
                           IFetchAlbumsFailure;
+
+export type AlbumsState = {
+  albums: IAlbumType[];
+  loading: boolean;
+  error: boolean;
+}
+
+export type rootState = {
+  albumsState: AlbumsState
+}

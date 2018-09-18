@@ -1,4 +1,10 @@
-const localState = {
+import {
+  ActionTypes,
+  AlbumsState,
+  TypeKeys
+} from './types';
+
+const localState: AlbumsState = {
   albums: [
     {
       id: "382ObEPsp2rxGrnsizN5TX",
@@ -19,11 +25,28 @@ const localState = {
       totalTracks: 5
     }
   ],
-  loading: false
+  loading: false,
+  error: false
 };
 
-export const albumReducer = (state: any = localState, action: any) => {
+export const albumReducer = (state: AlbumsState = localState, action: ActionTypes) => {
   switch(action.type){
+    case TypeKeys.FETCH_ALBUMS_REQUEST:
+      return Object.assign({},state,{
+        loading: true
+      });
+
+    case TypeKeys.FETCH_ALBUMS_SUCCESS:
+      return Object.assign({},state,{
+        albums: state.albums,
+        loading: false
+      });
+
+    case TypeKeys.FETCH_ALBUMS_REQUEST:
+      return Object.assign({},state,{
+        error: state.error
+      });
+
     default:
       return state;
   }
