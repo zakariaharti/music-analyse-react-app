@@ -1,7 +1,6 @@
 import {
-  ActionTypes,
   AlbumsState,
-  TypeKeys
+  TypeKeys,
 } from './types';
 
 const localState: AlbumsState = {
@@ -29,7 +28,7 @@ const localState: AlbumsState = {
   error: false
 };
 
-export const albumReducer = (state: AlbumsState = localState, action: ActionTypes) => {
+export const albumReducer = (state: AlbumsState = localState, action: any) => {
   switch(action.type){
     case TypeKeys.FETCH_ALBUMS_REQUEST:
       return Object.assign({},state,{
@@ -38,13 +37,13 @@ export const albumReducer = (state: AlbumsState = localState, action: ActionType
 
     case TypeKeys.FETCH_ALBUMS_SUCCESS:
       return Object.assign({},state,{
-        albums: state.albums,
+        albums: action.albums,
         loading: false
       });
 
     case TypeKeys.FETCH_ALBUMS_REQUEST:
       return Object.assign({},state,{
-        error: state.error
+        error: action.error
       });
 
     default:

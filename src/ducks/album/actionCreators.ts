@@ -7,21 +7,22 @@ import {
 
 export const fetchAlbums = (albums: any): IFetchAlbumsSuccess => {
   return{
+    albums,
     type: TypeKeys.FETCH_ALBUMS_SUCCESS,
-    albums
   }
+
 };
 
 export const albumsLoading = (loading: boolean): IFetchAlbumsRequest => {
   return{
+    loading,
     type: TypeKeys.FETCH_ALBUMS_REQUEST,
-    loading
   }
 };
 
 export const albumsError = (error: boolean): IFetchAlbumsFailure => {
   return{
+    error,
     type: TypeKeys.FETCH_ALBUMS_FAILURE,
-    error
   }
 };

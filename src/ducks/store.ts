@@ -1,19 +1,18 @@
 import { createStore, applyMiddleware } from 'redux';
 import loggerMiddleware from 'redux-logger';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import { createEpicMiddleware } from 'redux-observable';
+import thunkMiddleware from 'redux-thunk';
 
-import { rootReducer, rootEpic } from './reducer';
+import { rootReducer } from './reducer';
 
 const configureStore = () => {
-  const epicMiddleware = createEpicMiddleware();
-  const middlewares = [epicMiddleware,loggerMiddleware];
+  const middlewares = [thunkMiddleware,loggerMiddleware];
   const middlewareEnhancer = applyMiddleware(...middlewares);
   const enhancers = composeWithDevTools(middlewareEnhancer);
 
-  epicMiddleware.run(rootEpic);
+  const store = createStore(rootReducer, {}, enhancers);
 
-  return createStore(rootReducer, {}, enhancers);
+  return store;
 }
 
 export default configureStore;
