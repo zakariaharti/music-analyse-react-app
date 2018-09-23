@@ -15,7 +15,7 @@ const App: React.SFC<{}> = () => {
 injectGlobal`
   :root{
     box-sizing: border-box;
-    --primary-color: #d42661;
+    --primary-color: #8bc34a;
   }
 
   *,
@@ -51,6 +51,13 @@ injectGlobal`
 
   a{
     text-decoration: none;
+  }
+
+  .error-note{
+    text-align: center;
+    padding: 20px;
+    color: #F44336;
+    font-size: .9em;
   }
 `;
 

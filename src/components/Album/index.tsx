@@ -1,27 +1,50 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import {
-  FaTag,
-  FaFire,
-  FaCalendar
+  FaPlay,
+  FaBookmark
 } from 'react-icons/fa';
 
 export interface IAlbumType{
   id: string;
-  imageSrc: string;
+  images: [
+    {
+      url: string,
+      height: string,
+      width: string
+    },
+    {
+      url: string,
+      height: string,
+      width: string
+    },
+    {
+      url: string,
+      height: string,
+      width: string
+    }
+  ],
+  artists: [
+    {
+      external_urls: {
+        spotify: string
+      },
+      id: string,
+      name: string
+    }
+  ]
   label: string;
   name: string;
-  popularity: number;
-  releasedIn: string;
-  totalTracks: number;
+  popularity: string;
+  release_date: string;
+  total_tracks: string;
 }
 
 const StyledAlbum = styled.div`
   margin: 10px 0;
-  padding: 20px 20px;
-  border-radius: 6px;
-  background: rgba(230, 230, 230, 0.17);
-  border-bottom: 1px solid rgba(128, 128, 128, 0.28);
+  padding: 20px 0px;
+  border-bottom: 1px solid hsla(0, 1%, 86%, 0.62);
+  background: #ffffff;
 
   &:after{
     display: block;
@@ -30,77 +53,104 @@ const StyledAlbum = styled.div`
   }
 
   img{
-    width: 250px;
-    height: 250px;
+    width: 182px;
+    height: 185px;
     border-radius: 6px;
     float: left;
+
+    @media(max-width: ${739/16}em){
+      float: none;
+      width: 100%;
+      height: 100%;
+    }
   }
 `;
 
 const StyledAlbumBody = styled.div`
   float: left;
-  padding: 20px;
-  padding-top: 0;
+  padding-left: 20px;
 
   a.album-title{
-    color: #3c3c3c;
+    color: #424242;
     font-family: opensans-bold;
-    font-size: 1.2em;
+    font-size: 1.1em;
   }
 
-  ul{
-    margin: 0;
+  @media(max-width: ${700/16}em){
+    float: none;
     padding: 0;
+  }
+`;
 
-    li{
-      font-size: .9em;
-      margin: 10px 0;
-    }
+const StyledInfo = styled.div`
+  span{
+    display: block;
+    color: gray;
+    font-size: .9em;
 
-    svg{
-      color: rgba(128, 128, 128, 0.64);
-      margin-right: 10px;
-    }
-
-    span{
-      color: gray;
+    a{
+      color: #3e9ac3;
     }
   }
 
-  button{
-    color: white;
-    text-transform: uppercase;
-    padding: 10px 22px;
-    background: rgba(232, 56, 116, 0.8);
-    border-radius: 6px;
-    border: none;
-    margin-top: 26px;
+  span:last-of-type{
+    margin-top: 2em;
+  }
+`;
+
+const StyledButtons = styled.div`
+  margin-top: 1.2em;
+
+  .play-btn{
+    padding: 7px 58px;
+    background: var(--primary-color);
+    color: #ffffff;
+    border-radius: 10px;
+    margin-right: 1em;
+    text-transform: capitalize;
+    cursor: pointer;
+    transition: .3s ease-in;
+
+    &:hover{
+      background: rgb(122, 173, 64);
+    }
+  }
+
+  .save-btn{
+    color: #4a4a4a;
+    text-transform: capitalize;
+    text-transform: capitalize;
+
+    @media(max-width: ${556/16}em){
+      display: none;
+    }
   }
 `;
 
 const Album: React.SFC<IAlbumType> = (props) => {
   return(
     <StyledAlbum>
-      <img src={props.imageSrc} alt={props.label} />
+      <img src={props.images[1].url} alt={props.label} />
       <StyledAlbumBody>
         <a href="#" className="album-title">
-          <h3>{props.name}</h3>
+          <h3>{props.name.length > 40 ? props.name.slice(0,40) : props.name}</h3>
         </a>
-        <ul>
-          <li>
-            <span><FaTag /></span> <span>{props.label}</span>
-          </li>
-          <li>
-            <span><FaFire /></span> <span>{props.popularity}%</span>
-          </li>
-          <li>
-            <span><FaCalendar /></span> <span>{props.releasedIn}</span>
-          </li>
-          <li>
-            <span><FaTag /></span> <span>{props.label}</span>
-          </li>
-        </ul>
-        <button className="tracks-btn">view tracks ({props.totalTracks})</button>
+        <StyledInfo>
+          <span>
+            by <a href={props.artists[0].external_urls.spotify}>{props.artists[0].name}</a>
+          </span>
+          <span>
+            {props.total_tracks} songs
+          </span>
+        </StyledInfo>
+        <StyledButtons>
+          <a className="play-btn">
+            <FaPlay />  play
+          </a>
+          <a className="save-btn">
+            <FaBookmark /> save to your library
+          </a>
+        </StyledButtons>
       </StyledAlbumBody>
     </StyledAlbum>
   );

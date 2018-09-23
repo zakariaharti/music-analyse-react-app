@@ -1,9 +1,15 @@
 import { IAlbumType } from '../../components/Album';
 
 export enum TypeKeys{
-  FETCH_ALBUMS_SUCCESS = 'FETCH_ALBUMS_ACTION',
-  FETCH_ALBUMS_REQUEST = 'FETCH_ALBUMS_ACTION',
-  FETCH_ALBUMS_FAILURE = 'ALBUMS_FETCHED_ACTION'
+  FETCH_ALBUMS_SUCCESS = 'FETCH_ALBUMS_SUCCESS',
+  FETCH_ALBUMS_REQUEST = 'FETCH_ALBUMS_REQUEST',
+  FETCH_ALBUMS_FAILURE = 'ALBUMS_FETCHED_ACTION',
+  SEARCH_ALBUMS_REQUEST = 'SEARCH_ALBUMS_REQUEST'
+}
+
+export interface ISearchAlbumsRequest{
+  type: TypeKeys.SEARCH_ALBUMS_REQUEST;
+  albums: any;
 }
 
 export interface IFetchAlbumsSuccess{
@@ -26,7 +32,9 @@ export type ActionTypes = IFetchAlbumsSuccess |
                           IFetchAlbumsFailure;
 
 export type AlbumsState = {
-  albums: IAlbumType[];
+  albums: {
+    items: IAlbumType[]
+  };
   loading: boolean;
   error: boolean;
 }

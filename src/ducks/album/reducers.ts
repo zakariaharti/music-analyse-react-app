@@ -4,26 +4,44 @@ import {
 } from './types';
 
 const localState: AlbumsState = {
-  albums: [
-    {
-      id: "382ObEPsp2rxGrnsizN5TX",
-      imageSrc: `https://i.scdn.co/image/8239e8408eb461055a785cbaef37da6e5a4f5240`,
-      label: "Walt Disney Records",
-      name: "TRON: Legacy Reconfigured",
-      popularity: 50,
-      releasedIn: "2011-01-01",
-      totalTracks: 15
-    },
-    {
-      id: "4tZwfgrHOc3mvqYlEYSvVi",
-      imageSrc: `https://i.scdn.co/image/dce7f4e4c5f8741e0f08877863a8e57dfe1d4224`,
-      label: "Parlophone France",
-      name: "Human After All",
-      popularity: 51,
-      releasedIn: "2011-01-01",
-      totalTracks: 5
-    }
-  ],
+  albums: {
+    items: [
+      {
+        id: '',
+        images: [
+          {
+            url: '',
+            height: '',
+            width: ''
+          },
+          {
+            url: '',
+            height: '',
+            width: ''
+          },
+          {
+            url: '',
+            height: '',
+            width: ''
+          }
+        ],
+        artists: [
+          {
+            external_urls: {
+              spotify: ''
+            },
+            id: '',
+            name: ''
+          }
+        ],
+        label: '',
+        name: '',
+        popularity: '',
+        release_date: '',
+        total_tracks: '',
+      }
+    ]
+  },
   loading: false,
   error: false
 };
@@ -41,9 +59,16 @@ export const albumReducer = (state: AlbumsState = localState, action: any) => {
         loading: false
       });
 
-    case TypeKeys.FETCH_ALBUMS_REQUEST:
+    case TypeKeys.SEARCH_ALBUMS_REQUEST:
       return Object.assign({},state,{
-        error: action.error
+        albums: action.albums,
+        loading: false
+      })
+
+    case TypeKeys.FETCH_ALBUMS_FAILURE:
+      return Object.assign({},state,{
+        error: true,
+        loading: false
       });
 
     default:

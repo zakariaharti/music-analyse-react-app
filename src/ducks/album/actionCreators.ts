@@ -2,15 +2,22 @@ import { TypeKeys } from './types';
 import {
   IFetchAlbumsFailure,
   IFetchAlbumsRequest,
-  IFetchAlbumsSuccess
+  IFetchAlbumsSuccess,
+  ISearchAlbumsRequest
 } from './types';
+
+export const searchAlbums = (albums: any): ISearchAlbumsRequest => {
+  return{
+    albums,
+    type: TypeKeys.SEARCH_ALBUMS_REQUEST,
+  }
+};
 
 export const fetchAlbums = (albums: any): IFetchAlbumsSuccess => {
   return{
     albums,
     type: TypeKeys.FETCH_ALBUMS_SUCCESS,
   }
-
 };
 
 export const albumsLoading = (loading: boolean): IFetchAlbumsRequest => {

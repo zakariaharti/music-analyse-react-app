@@ -1,9 +1,10 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { FaSearch } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 import Container from '../ui/Container';
 import AlbumsContainer from '../containers/AlbumsContainer';
+import SeachComponent from '../components/Search';
 
 const StyledWrapper = styled.div`
   padding: 3em 0;
@@ -31,6 +32,12 @@ const StyledHeader = styled.div`
     padding: 10px 22px;
     background: var(--primary-color);
     border-radius: 6px;
+    cursor: pointer;
+    transition: .3s ease-in;
+
+    &:hover{
+      background: rgb(122, 173, 64);
+    }
 
     @media(max-width: ${667/16}em){
       align-self: stretch;
@@ -85,27 +92,49 @@ const StyledBody = styled.div`
   }
 `;
 
-const Home:React.SFC<{}> = () => {
-  return(
+interface IHomeStateType{
+  keyword: string;
+}
+
+class Home extends React.Component<{},IHomeStateType> {
+
+  public state = {
+    keyword: ''
+  }
+
+  public onChange = (event: React.SyntheticEvent) => {
+    const target = event.target as HTMLInputElement;
+
+    this.setState({ keyword: target.value });
+  }
+
+
+  public render(){
+    return(
     <React.Fragment>
       <StyledWrapper>
         <Container>
            <StyledHeader>
-             <a href="#" className="home">home</a>
-             <a href="#" className="login-button">login</a>
+             <Link to="/" className="home">home</Link>
+             <a href="https://github.com/zakariaharti" className="login-button">GitHub</a>
            </StyledHeader>
            <StyledBody>
              <h1>music realm</h1>
-             <form>
-                <input type="text" placeholder="type album name.." />
-                <FaSearch className="search-icon" />
-             </form>
+             <SeachComponent
+               keyword={this.state.keyword}
+               onChange={this.onChange}
+             />
            </StyledBody>
          </Container>
        </StyledWrapper>
-      <AlbumsContainer />
+      <AlbumsContainer
+        keyword={this.state.keyword}
+        limit="20"
+        offset="0"
+       />
   </React.Fragment>
   );
+}
 };
 
 export default Home;
