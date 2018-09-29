@@ -7,7 +7,7 @@ import {
   albumLoading,
 } from './actionCreators';
 
-import { clientId, clientSecret } from '../../secrets';
+import { clientId, clientSecret } from '../../../secrets';
 
 const url = 'https://cors-anywhere.herokuapp.com/https://accounts.spotify.com/api/token';
 const albumDetailUrl = 'https://cors-anywhere.herokuapp.com/https://api.spotify.com/v1/albums';
