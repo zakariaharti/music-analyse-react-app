@@ -138,7 +138,7 @@ const Album: React.SFC<IAlbumType> = (props) => {
       <img src={props.images[1].url} alt={props.label} />
       <StyledAlbumBody>
         <Link to={`analyse/album/${props.id}`} className="album-title">
-          <h3>{props.name.length > 40 ? props.name.slice(0,40) : props.name}</h3>
+          <h3>{props.name.length > 30 ? props.name.slice(0,30) : props.name}</h3>
         </Link>
         <StyledInfo>
           <span>
