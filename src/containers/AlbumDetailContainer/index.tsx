@@ -18,12 +18,6 @@ interface IAlbumDetailContainerPropType{
 
 class AlbumDetailContainer extends React.Component<IAlbumDetailContainerPropType,{}> {
 
-  public componentDidUpdate(prevProps: IAlbumDetailContainerPropType){
-    if(prevProps.url_id !== this.props.url_id){
-      this.props.onFetchAlbum();
-    }
-  }
-
   public componentDidMount(){
     this.props.onFetchAlbum();
   }

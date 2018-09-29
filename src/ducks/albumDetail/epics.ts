@@ -9,9 +9,9 @@ import {
 
 import { clientId, clientSecret } from '../../secrets';
 
-const url = 'https://crossorigin.me/https://accounts.spotify.com/api/token';
-const albumDetailUrl = 'https://crossorigin.me/https://api.spotify.com/v1/albums';
-const trackUrl = 'https://crossorigin.me/https://api.spotify.com/v1/audio-features';
+const url = 'https://cors-anywhere.herokuapp.com/https://accounts.spotify.com/api/token';
+const albumDetailUrl = 'https://cors-anywhere.herokuapp.com/https://api.spotify.com/v1/albums';
+const trackUrl = 'https://cors-anywhere.herokuapp.com/https://api.spotify.com/v1/audio-features';
 
 export const fetchAlbumThunk = (id: string) => (dispatch: any) => {
   dispatch(albumLoading(true));

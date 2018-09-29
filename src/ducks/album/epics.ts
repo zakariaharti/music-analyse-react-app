@@ -9,10 +9,10 @@ import {
 
 import { clientId, clientSecret } from '../../secrets';
 
-const url = 'https://crossorigin.me/https://accounts.spotify.com/api/token';
-const albumsUrl = `https://crossorigin.me/https://api.spotify.com/v1/browse/new-releases`;
-const searchUrl = `https://crossorigin.me/https://api.spotify.com/v1/search`;
-const albumDetailUrl = 'https://crossorigin.me/https://api.spotify.com/v1/albums';
+const url = 'https://cors-anywhere.herokuapp.com/https://accounts.spotify.com/api/token';
+const albumsUrl = `https://cors-anywhere.herokuapp.com/https://api.spotify.com/v1/browse/new-releases`;
+const searchUrl = `https://cors-anywhere.herokuapp.com/https://api.spotify.com/v1/search`;
+const albumDetailUrl = 'https://cors-anywhere.herokuapp.com/https://api.spotify.com/v1/albums';
 
 export const fetchAlbumsThunk = () => (dispatch: any) => {
   dispatch(albumsLoading(true));
