@@ -1,8 +1,9 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import {
-  FaPlay,
-  FaBookmark
+  FaBookmark,
+  FaChartBar
 } from 'react-icons/fa';
 
 export interface IAlbumType{
@@ -114,6 +115,10 @@ const StyledButtons = styled.div`
     &:hover{
       background: rgb(122, 173, 64);
     }
+
+    svg{
+      vertical-align: middle;
+    }
   }
 
   .save-btn{
@@ -132,9 +137,9 @@ const Album: React.SFC<IAlbumType> = (props) => {
     <StyledAlbum>
       <img src={props.images[1].url} alt={props.label} />
       <StyledAlbumBody>
-        <a href="#" className="album-title">
+        <Link to={`analyse/album/${props.id}`} className="album-title">
           <h3>{props.name.length > 40 ? props.name.slice(0,40) : props.name}</h3>
-        </a>
+        </Link>
         <StyledInfo>
           <span>
             by <a href={props.artists[0].external_urls.spotify}>{props.artists[0].name}</a>
@@ -144,9 +149,9 @@ const Album: React.SFC<IAlbumType> = (props) => {
           </span>
         </StyledInfo>
         <StyledButtons>
-          <a className="play-btn">
-            <FaPlay />  play
-          </a>
+          <Link to={`analyse/album/${props.id}`} className="play-btn">
+            <FaChartBar />  analyse
+          </Link>
           <a className="save-btn">
             <FaBookmark /> save to your library
           </a>

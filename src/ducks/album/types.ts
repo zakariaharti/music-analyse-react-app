@@ -4,7 +4,13 @@ export enum TypeKeys{
   FETCH_ALBUMS_SUCCESS = 'FETCH_ALBUMS_SUCCESS',
   FETCH_ALBUMS_REQUEST = 'FETCH_ALBUMS_REQUEST',
   FETCH_ALBUMS_FAILURE = 'ALBUMS_FETCHED_ACTION',
+  FEATCH_ALBUM_DETAIL = 'FEATCH_ALBUM_DETAIL',
   SEARCH_ALBUMS_REQUEST = 'SEARCH_ALBUMS_REQUEST'
+}
+
+export interface IFetchAlbumDetail{
+  type: TypeKeys.FEATCH_ALBUM_DETAIL,
+  album: any;
 }
 
 export interface ISearchAlbumsRequest{

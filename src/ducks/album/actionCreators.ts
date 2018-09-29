@@ -3,7 +3,8 @@ import {
   IFetchAlbumsFailure,
   IFetchAlbumsRequest,
   IFetchAlbumsSuccess,
-  ISearchAlbumsRequest
+  ISearchAlbumsRequest,
+  IFetchAlbumDetail
 } from './types';
 
 export const searchAlbums = (albums: any): ISearchAlbumsRequest => {
@@ -17,6 +18,13 @@ export const fetchAlbums = (albums: any): IFetchAlbumsSuccess => {
   return{
     albums,
     type: TypeKeys.FETCH_ALBUMS_SUCCESS,
+  }
+};
+
+export const fetchAlbumDetail = (album: any): IFetchAlbumDetail => {
+  return{
+    album,
+    type: TypeKeys.FEATCH_ALBUM_DETAIL,
   }
 };
 

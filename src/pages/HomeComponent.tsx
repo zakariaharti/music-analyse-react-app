@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 import Container from '../ui/Container';
+import Footer from '../ui/Footer';
 import AlbumsContainer from '../containers/AlbumsContainer';
 import SeachComponent from '../components/Search';
 
@@ -119,7 +120,7 @@ class Home extends React.Component<{},IHomeStateType> {
              <a href="https://github.com/zakariaharti" className="login-button">GitHub</a>
            </StyledHeader>
            <StyledBody>
-             <h1>music realm</h1>
+             <h1>music analyses</h1>
              <SeachComponent
                keyword={this.state.keyword}
                onChange={this.onChange}
@@ -132,6 +133,7 @@ class Home extends React.Component<{},IHomeStateType> {
         limit="20"
         offset="0"
        />
+       <Footer />
   </React.Fragment>
   );
 }

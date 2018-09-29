@@ -80,7 +80,6 @@ class AlbumsContainer extends React.Component<IAlbumsContainerType,IAlbumStateTy
 
   public componentDidMount(){
     this.props.onFetchAlbums();
-
   }
 
   public componentDidUpdate(prevProps: IAlbumsContainerType){
@@ -154,7 +153,7 @@ class AlbumsContainer extends React.Component<IAlbumsContainerType,IAlbumStateTy
           >
             previous
         </button>
-        <p>{this.props.albums.offset} / {this.props.albums.limit}</p>
+        <p>{this.props.albums.offset} / {this.props.albums.total}</p>
         <button
           onClick={this.onNextPage}
           disabled={!this.props.albums.next}

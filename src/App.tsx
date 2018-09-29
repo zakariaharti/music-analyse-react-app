@@ -1,14 +1,50 @@
 import * as React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { injectGlobal } from 'styled-components';
+import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
+import styled, { injectGlobal } from 'styled-components';
 
 import Home from './pages/HomeComponent';
+import Album from './pages/AlbumComponent';
+import Track from './pages/TrackComponent';
+import Container from './ui/Container';
+import Footer from './ui/Footer';
+
+const StyledNotFound = styled.div`
+  padding: 200px 0;
+  text-align: center;
+
+  h1{
+    color: rgba(199, 199, 199, 0.85);
+  }
+
+  a{
+    text-transform: capitalize;
+    background: rgba(212, 212, 212, 0.67);
+    padding: 5px 20px;
+    border-radius: 6px;
+    color: gray;
+  }
+`;
 
 const App: React.SFC<{}> = () => {
   return(
-    <Router>
-      <Route exact={true} path="/" component={Home} />
-    </Router>
+    <BrowserRouter>
+      <Switch>
+        <Route exact={true} path="/" component={Home} />
+        <Route path="/analyse/album/:id" component={Album} />
+        <Route path="/analyse/track/:id" component={Track} />
+        <Route render={() => {
+          return(
+            <Container>
+              <StyledNotFound>
+                <h1>Oops! the page your are looking for couldn't be foung</h1>
+                <Link to="/">go home</Link>
+              </StyledNotFound>
+              <Footer />
+            </Container>
+          )
+        }} />
+      </Switch>
+    </BrowserRouter>
   )
 }
 
