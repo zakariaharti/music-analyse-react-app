@@ -7,12 +7,11 @@ import {
   albumLoading,
 } from './actionCreators';
 
+import { clientId, clientSecret } from '../../secrets';
 
-const clientId = 'fb192c8fe1ba40c7b6c36f563f03bbd1';
-const clientSecret = 'c0b8128106c54d1eb5233d7f88427677';
-const url = 'https://accounts.spotify.com/api/token';
-const albumDetailUrl = 'https://api.spotify.com/v1/albums';
-const trackUrl = 'https://api.spotify.com/v1/audio-features';
+const url = 'https://crossorigin.me/https://accounts.spotify.com/api/token';
+const albumDetailUrl = 'https://crossorigin.me/https://api.spotify.com/v1/albums';
+const trackUrl = 'https://crossorigin.me/https://api.spotify.com/v1/audio-features';
 
 export const fetchAlbumThunk = (id: string) => (dispatch: any) => {
   dispatch(albumLoading(true));

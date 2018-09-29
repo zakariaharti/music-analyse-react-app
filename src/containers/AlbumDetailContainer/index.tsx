@@ -20,9 +20,6 @@ class AlbumDetailContainer extends React.Component<IAlbumDetailContainerPropType
 
   public componentDidUpdate(prevProps: IAlbumDetailContainerPropType){
     if(prevProps.url_id !== this.props.url_id){
-      console.log(
-        "yes"
-      )
       this.props.onFetchAlbum();
     }
   }

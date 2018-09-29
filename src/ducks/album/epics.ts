@@ -7,13 +7,12 @@ import {
   fetchAlbumDetail
 } from './actionCreators';
 
+import { clientId, clientSecret } from '../../secrets';
 
-const clientId = 'fb192c8fe1ba40c7b6c36f563f03bbd1';
-const clientSecret = 'c0b8128106c54d1eb5233d7f88427677';
-const url = 'https://accounts.spotify.com/api/token';
-const albumsUrl = `https://api.spotify.com/v1/browse/new-releases`;
-const searchUrl = `https://api.spotify.com/v1/search`;
-const albumDetailUrl = 'https://api.spotify.com/v1/albums';
+const url = 'https://crossorigin.me/https://accounts.spotify.com/api/token';
+const albumsUrl = `https://crossorigin.me/https://api.spotify.com/v1/browse/new-releases`;
+const searchUrl = `https://crossorigin.me/https://api.spotify.com/v1/search`;
+const albumDetailUrl = 'https://crossorigin.me/https://api.spotify.com/v1/albums';
 
 export const fetchAlbumsThunk = () => (dispatch: any) => {
   dispatch(albumsLoading(true));
